@@ -25,6 +25,19 @@ if not os.path.exists(os.path.join(MODEL_DIR, PTH_MODEL_DIR)):
 
 # pylint: disable=line-too-long
 MODEL_POOL = {
+     'stylegan2_TADNE': {
+         'weight_path': os.path.join(MODEL_DIR, PTH_MODEL_DIR, 'stylegan2_TADNE.pth'),
+         'tf_weight_path': "/content/network-tadne.pkl",
+         'tf_code_path': "/content/stylegan2",
+         'gan_type': 'stylegan2',
+         'dataset_name': 'danbooru2019SFW',
+         'z_space_dim': 1024,
+         'w_space_dim': 1024,
+         'resolution': 512,
+         'g_architecture_type': 'skip',
+         'fused_modulate': 'True'
+     },
+  
     # PGGAN Official.
     'pggan_celebahq': {
         'weight_path': os.path.join(MODEL_DIR, PTH_MODEL_DIR, 'pggan_celebahq1024_generator.pth'),
