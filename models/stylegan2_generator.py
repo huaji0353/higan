@@ -64,6 +64,10 @@ class StyleGAN2Generator(BaseGenerator):
     self.logger.info(f'Loading tf weights from `{self.tf_weight_path}`.')
     self.check_attr('tf_code_path')
     sys.path.insert(0, self.tf_code_path)
+    
+    import dnnlib.tflib as tflib
+    tflib.init_tf()
+    
     with open(self.tf_weight_path, 'rb') as f:
       _, _, tf_net = pickle.load(f)  # G, D, Gs
     sys.path.pop(0)
