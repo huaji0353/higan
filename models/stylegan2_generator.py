@@ -15,6 +15,7 @@ from .stylegan2_generator_network import StyleGAN2GeneratorNet
 
 __all__ = ['StyleGAN2Generator']
 
+from .TADNE import TADNEGeneratorNet
 
 class StyleGAN2Generator(BaseGenerator):
   """Defines the generator class of StyleGAN2.
@@ -33,16 +34,18 @@ class StyleGAN2Generator(BaseGenerator):
     self.truncation_psi = model_settings.STYLEGAN2_TRUNCATION_PSI
     self.truncation_layers = model_settings.STYLEGAN2_TRUNCATION_LAYERS
     self.randomize_noise = model_settings.STYLEGAN2_RANDOMIZE_NOISE
-    self.net = StyleGAN2GeneratorNet(
-        resolution=self.resolution,
-        z_space_dim=self.z_space_dim,
-        w_space_dim=self.w_space_dim,
-        image_channels=self.image_channels,
-        architecture_type=self.g_architecture_type,
-        fused_modulate=self.fused_modulate,
-        truncation_psi=self.truncation_psi,
-        truncation_layers=self.truncation_layers,
-        randomize_noise=self.randomize_noise)
+    # self.net = StyleGAN2GeneratorNet(
+    #     resolution=self.resolution,
+    #     z_space_dim=self.z_space_dim,
+    #     w_space_dim=self.w_space_dim,
+    #     image_channels=self.image_channels,
+    #     architecture_type=self.g_architecture_type,
+    #     fused_modulate=self.fused_modulate,
+    #     truncation_psi=self.truncation_psi,
+    #     truncation_layers=self.truncation_layers,
+    #     randomize_noise=self.randomize_noise)
+    self.net = TADNEGeneratorNet()
+    
     self.num_layers = self.net.num_layers
     self.model_specific_vars = ['truncation.truncation']
 
