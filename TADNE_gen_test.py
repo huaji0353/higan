@@ -30,7 +30,7 @@ def postprocess(images):
   
 from models.stylegan2_generator import StyleGAN2Generator
 
-checkpoint = torch.load('/content/stylegan2-genforce/models/pretrain/pytorch/genforce_stylegan2_TADNE.pth', map_location='cuda')
+checkpoint = torch.load('/content/stylegan2-genforce/models/pretrain/pytorch/stylegan2_TADNE.pth', map_location='cuda')
 checkpoint['truncation.truncation'] = torch.randn(1, 16, 1)
 
 generator = TADNEGeneratorNet().to('cuda')
